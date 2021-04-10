@@ -1,11 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AlertContext from "../../context/Alerts/alertContext";
+import AuthContext from "../../context/authentication/authContext";
 
-const NewAccount = () => {
+const NewAccount = (props) => {
   //Extraer valores de context
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
+
+  const authContext = useContext(AuthContext);
+  const { msg, authenticated, registerUser } = authContext;
 
   const [user, setUser] = useState({
     name: "",
@@ -15,6 +19,17 @@ const NewAccount = () => {
   });
 
   const { name, email, password, confirm } = user;
+
+  //En caso de que el usuario se haga autenticado o registrado
+  useEffect(() => {
+    if (authenticated) {
+      props.history.push("/proyectos");
+    }
+    if(msg){
+      showAlert(msg.msg, msg.category);
+      return;
+    }
+  }, [msg, authenticated, props.history]);
 
   const onChange = (e) => {
     setUser({
@@ -47,16 +62,13 @@ const NewAccount = () => {
     }
 
     //Password iguales
-    if(password !== confirm){
-      showAlert(
-        "Los password NO son iguales",
-        "alerta-error"
-      );
+    if (password !== confirm) {
+      showAlert("Los password NO son iguales", "alerta-error");
       return;
     }
 
     //Pasarlo al action
-    
+    registerUser({ name, email, password });
   };
 
   return (
