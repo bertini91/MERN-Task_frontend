@@ -10,6 +10,7 @@ The themes implemented were react context, types, JWT and private routes
 
 ## Commands to run the project are:
 git clone URL
+
 npm install
 
 ### Located at the root of the project you must run the following command:
