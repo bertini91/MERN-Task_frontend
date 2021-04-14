@@ -8,6 +8,7 @@ const HeaderBar = () => {
 
   useEffect(() => {
     userAuthenticated();
+    //eslint-disable-next-line
   }, []);
 
   return (

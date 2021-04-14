@@ -5,10 +5,11 @@ import AuthContext from "../../context/authentication/authContext";
 const RoutePrivate = ({ component: Component, ...props }) => {
   //Extraer la info de autenticacion
   const authContext = useContext(AuthContext);
-  const {userAuthenticated, authenticated, loading } = authContext;
+  const { userAuthenticated, authenticated, loading } = authContext;
 
   useEffect(() => {
     userAuthenticated();
+    //eslint-disable-next-line
   }, []);
 
   /* console.log(userAuthenticated); */

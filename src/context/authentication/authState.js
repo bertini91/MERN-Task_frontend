@@ -54,13 +54,12 @@ const AuthState = (props) => {
     }
     try {
       const response = await clientAxios.get("/api/auth");
-      console.log(response.data);
       dispatch({
         type: GET_USER,
         payload: response.data.user,
       });
     } catch (error) {
-      console.log(error.response.data.msg);
+      console.log(error)
       const alert = {
         msg: error.response.data.msg,
         category: "alerta-error",
@@ -73,7 +72,6 @@ const AuthState = (props) => {
   const logIn = async (data) => {
     try {
       const response = await clientAxios.post("/api/auth", data);
-      console.log(response);
       dispatch({
         type: LOGIN_APROVED,
         payload: response.data,
@@ -81,7 +79,6 @@ const AuthState = (props) => {
       //Obtener el usuario
       userAuthenticated();
     } catch (error) {
-      console.log(error.response.data.msg);
       const alert = {
         msg: error.response.data.msg,
         category: "alerta-error",

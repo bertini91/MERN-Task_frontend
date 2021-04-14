@@ -3,7 +3,6 @@ import {
   POST_TASK,
   VALIDATE_TASK,
   DELETE_TASK,
-  STATE_TASK,
   ACTUAL_TASK,
   PUT_TASK,
   CLEAN_TASK,
@@ -14,14 +13,12 @@ export default (state, action) => {
     case TASKS_PROJECT:
       return {
         ...state,
-        tasksProject: state.tasks.filter(
-          (task) => task.projectId === action.payload
-        ),
+        tasksProject: action.payload,
       };
     case POST_TASK:
       return {
         ...state,
-        tasks: [action.payload, ...state.tasks],
+        tasksProject: [action.payload, ...state.tasksProject],
         errorTask: false,
       };
     case VALIDATE_TASK:
@@ -32,14 +29,13 @@ export default (state, action) => {
     case DELETE_TASK:
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload),
+        tasksProject: state.tasksProject.filter((task) => task._id !== action.payload),
       };
     case PUT_TASK:
-    case STATE_TASK:
       return {
         ...state,
-        tasks: state.tasks.map((task) =>
-          task.id === action.payload.id ? action.payload : task
+        tasksProject: state.tasksProject.map((task) =>
+          task._id === action.payload._id ? action.payload : task
         ),
       };
     case ACTUAL_TASK:

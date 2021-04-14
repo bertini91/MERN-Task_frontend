@@ -10,7 +10,6 @@ export const TASKS_PROJECT = "TASKS_PROJECT";
 export const POST_TASK = "POST_TASK";
 export const VALIDATE_TASK = "VALIDATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
-export const STATE_TASK = "STATE_TASK";
 export const ACTUAL_TASK = "ACTUAL_TASK";
 export const PUT_TASK = "PUT_TASK";
 export const CLEAN_TASK = "CLEAN_TASK";

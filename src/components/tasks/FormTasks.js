@@ -63,8 +63,7 @@ const FormTasks = () => {
     //Revisar si es editar o nueva tarea
     if (selectedTask === null) {
       //Agregar la tarea al state
-      task.state = false;
-      task.projectId = actualProject.id;
+      task.project = actualProject._id;
       addTask(task);
     } else {
       //Actualizar la tarea existente

@@ -12,12 +12,12 @@ const Task = ({ task }) => {
 
   //Obtener, eliminar y actualizar el estado desde tareas de context
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getTasks, putStateTask, saveActualTask } = tasksContext;
+  const { deleteTask, getTasks, putTask, saveActualTask } = tasksContext;
 
   //Funcion que elimina una tarea al presionar el boton
-  const deleteT = () => {
-    deleteTask(task.id);
-    getTasks(actualProject.id);
+  const deleteT = (id) => {
+    deleteTask(id, actualProject._id);
+    getTasks(actualProject._id);
   };
 
   //Funcion que modifica el estado de la tarea
@@ -27,7 +27,7 @@ const Task = ({ task }) => {
     } else {
       task.state = true;
     }
-    putStateTask(task);
+    putTask(task);
   };
 
   //Agrega una tarea actual cuando el usuario desea editarla
@@ -68,7 +68,7 @@ const Task = ({ task }) => {
         <button
           type="button"
           className="btn btn-secundario"
-          onClick={() => deleteT()}
+          onClick={() => deleteT(task._id)}
         >
           Eliminar
         </button>
