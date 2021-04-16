@@ -6,7 +6,7 @@ Each project will have its tasks, of which they can be modified, change their st
 
 The development framework used was MERN.
 
-The themes implemented were react context, types, JWT and private routes 
+The themes implemented were react context (useReducers), types, JWT and private routes 
 
 ## Commands to run the project are:
 
